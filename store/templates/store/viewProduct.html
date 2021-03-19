@@ -1,0 +1,39 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    <h1 class="mx-5" style="width:300px">{{product.name}}</h1>
+    <h1>Price: <span style="color:coral; width:300px;">Rs {{product.price|floatformat:2}}<span></h1>
+        <h3 class="mx-5" style="width:300px;"><i>Delivery: Free</i></h3>
+
+    </div>
+
+    <div class="row">
+    <div class="col-md-4 col">
+        <img src="{{product.imageURL}}" width="300px", height="300px" class="my-4">
+        <button style="width:300px;" data-product="{{product.id}}" data-action="add" class="col btn btn-outline-secondary add-btn update-cart">Add to Cart</button><br><br>
+
+    </div>
+
+<div style="width: 300px">
+        <h4 class="mx-4"><i>Description</i></h4>
+        <ul>
+            <li>{{product.description1}}</li>
+            <li>{{product.description2}}</li>
+            <li>{{product.description3}}</li>
+        </ul>
+    <p>{{product.description}}</p>
+</div>
+    <div class="col border border-5 ">
+        <h1><i><u>More Images</u></h1></i>
+        <img src="../static/images/{{product.image1}}" width="200px", height="200px" class="my-2 rounded-circle">
+        <img src="../static/images/{{product.image2}}" width="200px", height="200px" class="my-2 rounded-circle">
+        <img src="../static/images/{{product.image3}}" width="200px", height="200px" class="my-2 rounded-circle">
+        <img src="../static/images/{{product.image4}}" width="200px", height="200px" class="my-2 rounded-circle">
+
+    </div>
+    </div>  
+</div>
+{% endblock %}

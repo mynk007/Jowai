@@ -1,0 +1,48 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Customer User Name</th>
+        <th scope="col">{{order_details.customer}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Order ID</th>
+            <td colspan="2">{{order_details.order_id}}</td>
+          </tr>
+        <tr>
+            <th scope="row">Customer Name</th>
+            <td colspan="2">{{order_details.customer_name}}</td>
+          </tr>
+        <tr>
+            <th scope="row">Customer Email</th>
+            <td colspan="2">{{order_details.customer_email}}</td>
+          </tr>
+
+      <tr>
+        <th scope="row">Product Name</th>
+        <td>{{order_details.name}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Price</th>
+        <td colspan="2">{{order_details.price}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Quantity</th>
+        <td colspan="2">{{order_details.quantity}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Shipping Details</th>
+        <td colspan="2">{{order_details.shipping_address}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+{% endblock %}

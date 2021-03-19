@@ -1,0 +1,30 @@
+<!-- File: store/templates/store/store.html -->
+
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block searchBar %}
+<input class="form-control" style="width:150px;" id="searchtxt" type="search" placeholder="Search" aria-label="Search">
+
+<button class="btn btn-outline-success bg-light mr-2" type="submit">Search</button>
+{% endblock %}
+{% block content %}
+
+	<div class="row rowmrg">
+          {% for product in products %}
+		<div class="col-lg-3 post">
+			<img class="thumbnail"  src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6 class="title"><strong>{{product.name}}</strong></h6>
+				<hr>
+
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="/view_product/{{product.id}}">View</a>
+				<h4 style="float: right;font-size:0.7rem;margin-top:10px;"><strong  class="price">Rs {{product.price|floatformat:2}}</strong></h4>
+
+			</div>
+          </div>
+          {% endfor %}
+	</div>
+	<script src="{% static 'js/search.js' %}"></script>
+
+{% endblock content %}

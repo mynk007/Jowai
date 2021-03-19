@@ -1,0 +1,39 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+
+            <a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Continue Shopping</a>
+
+            <br>
+            <br>
+
+        </div>
+
+        <br>
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"><strong>Image</strong></div>
+                <div style="flex:2"><strong>Product Name</strong></div>
+                <div style="flex:2"><strong>Price</strong></div>
+                <div style="flex:2"><strong>Quantity</strong></div>
+                <div style="flex:2"><strong>Details</strong></div>
+            </div>
+            {% for item in myOrders %}
+            <div class="cart-row">
+                <a style="flex:2" href="/view_product/{{item.product_id}}"><div><img class="row-image" src="{{item.image}}"></div></a>
+                <div style="flex:2"><p>{{item.name}}</p></div>
+                <div style="flex:2"><p>{{item.price}}</p></div>
+                <div style="flex:2"><p class="quantity">{{item.quantity}}</p> </div>
+                <div style="flex:2"><a class="btn btn-outline-success" href="/order_details/{{item.id}}">View Details</a></div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

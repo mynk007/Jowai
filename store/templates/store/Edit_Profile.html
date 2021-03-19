@@ -1,0 +1,54 @@
+{% extends 'store/Main.html' %}
+{% block title %} My Profile {% endblock %}
+{% block content %}
+{% load static %}
+
+<h1>Edit Profile</h1>
+<div class="jumbotron bg-dark">
+
+
+  <form method="POST" action="/editProfile">
+    {% csrf_token %}
+    <div class="row">
+      <div class="mb-3 col-4">
+        <label>User Name</label>
+        <input type="text" class="form-control" value="{{user_name}}" disabled>
+      </div>
+  
+      <div class="mb-3 col-4">
+        <label>Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{email}}">
+      </div>
+  
+      <div class="mb-3 col-4">
+        <label>First Name</label>
+        <input type="text" class="form-control" name=first_name value="{{request.user.first_name}}">
+      </div>
+      <div class="mb-3 col-4">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="last_name" value="{{request.user.last_name}}">
+      </div>
+      <div class="mb-3 col-4">
+        <label>Contact No</label>
+        <input type="text" class="form-control" name="contact_no" maxlength="10" value="78775545">
+      </div>
+
+
+      <div class="mb-3 col-5">
+        <label>Enter Your Password for verification</label>
+        <input type="password" name="password" class="form-control">
+      </div>
+      
+
+
+    </div>
+    {% for message in messages %}
+    <div class="alert alert-primary col-3" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'store/Main.html' %} {% block title %} My Profile {% endblock %} {% block content %} {% load static %}
+
+
+<style>
+    * {
+        color: #fff;
+    }
+    
+    @media screen and (max-width: 600px) {
+        col-7.9 {
+            width: 400px
+        }
+    }
+</style>
+
+<div class="profileMainDiv">
+    <div class="row jumbotron  text-center bg-dark profilePicDiv">
+
+        <div class="col-12" style="border-radius:50%; width:200px; height:200px;">
+            <img class="profileImage" src="../static/images/{{user_pic}}" alt="Please upload your profile pic" width="200px" height="200px" style="outline:none; border:none">
+        </div>
+        <h3 class="col-12 mt-2"><b><i>{{name}}</i></b></h3>
+        <h3 class="col-12"><b><i>{{user_name}}</i></b></h3>
+
+
+    </div>
+
+    <div class="container jumbotron bg-dark profileDiv2" style="color#fff">
+
+        <div class="row mt-5">
+            <div class="col-4 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto my-auto  overflow-wrap">User Name </h4>
+            </div>
+            <div class="col-8 badge bg-dark text-left">
+                <h4 class="mx-auto my-auto">{{user_name}}</h4>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-4 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto my-auto  overflow-wrap">Name</h4>
+            </div>
+            <div class="col-8 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto  overflow-wrap">{{name}}</h4>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto my-auto  overflow-wrap">Contact</h4>
+            </div>
+            <div class="col-8 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto  overflow-wrap">{{contact_no}}</h4>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-4 badge text-wrap bg-dark text-left">
+                <h4 class="mx-auto my-auto  overflow-wrap">Email</h4>
+            </div>
+            <div class="col-8 badge text-wrap text-left">
+                <h4 class="mx-auto my-auto overflow-wrap">{{email}}</h4>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-4 badge bg-dark text-left">
+                <a href="/editProfile"><button class="btn btn-success mx-auto my-2">Edit Profile</button></a>
+            </div>
+            <div class="col-8 badge bg-dark text-left">
+                <a href="/password"><button class="btn btn-success mx-auto my-2">Change Password</button></a>
+
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-4 badge bg-dark text-left">
+                <a href="/editProfile"><button class="btn btn-success mx-auto my-2" id="chg-pic">Change Profile Pic</button></a>
+            </div>
+            <div class="col-8 badge bg-dark text-left">
+
+
+            </div>
+            <div class="row">
+                <div class="col-4 badge bg-dark text-left">
+
+                    <div class="col-8 badge bg-dark text-left">
+
+
+                    </div>
+                </div>
+            </div>
+
+            <form method="POST" action="" enctype="multipart/form-data" class="hidden ml-1" id="img-uploader">
+                {% csrf_token %} {{form.profile_pic}}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("chg-pic").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.getElementById("img-uploader").classList.remove("hidden")
+        })
+    </script>
+    {% endblock %}
